@@ -1,0 +1,145 @@
+twilio: # Twilio gateway configuration
+  accountId: 
+  accountToken: 
+  numbers: # Numbers allocated in Twilio
+    - # First number
+    - # Second number
+    - # Third number
+    - # ...
+    - # Nth number
+  nanpaMessagingServiceSid: # Twilio SID for the messaging service to use for NANPA.
+  messagingServiceSid: # Twilio SID for the message service to use for non-NANPA.
+  localDomain: # Domain Twilio can connect back to for calls. Should be domain of your service.
+  iosVerificationText: # Text to use for the verification message on iOS. Will be passed to String.format with the verification code as argument 1.
+  androidNgVerificationText: # Text to use for the verification message on android-ng client types. Will be passed to String.format with the verification code as argument 1.
+  android202001VerificationText: # Text to use for the verification message on android-2020-01 client types. Will be passed to String.format with the verification code as argument 1.
+  genericVerificationText: # Text to use when the client type is unrecognized. Will be passed to String.format with the verification code as argument 1.
+  senderId:
+    defaultSenderId: # Sender ID to use for country codes not found in either the overrides or omitted lists.
+    countryCodesWithoutSenderId:
+      - # First country code
+      - # Second country code
+      - # ...
+      - # Nth country code
+    countrySpecificSenderIds:
+      - countryCode: # First country code
+        senderId: # Sender ID to use for this country
+      - countryCode: # Second country code
+        senderId: # Sender ID to use for this country
+      - countryCode: # ...
+        senderId: # ...
+      - countryCode: # Nth country code
+        senderId: # Sender ID to use for this country
+
+push:
+  queueSize: # Size of push pending queue
+
+redphone:
+  authKey: # Deprecated
+
+turn: # TURN server configuration
+  secret: # TURN server secret
+  uris:
+    - stun:yourdomain:80
+    - stun:yourdomain.com:443
+    - turn:yourdomain:443?transport=udp
+    - turn:etc.com:80?transport=udp
+
+cacheCluster: # Redis server configuration for cache cluster
+  urls:
+    - redis://redis.example.com:6379/
+
+directory:
+  redis: # Redis server configuration for directory cluster
+    url:
+    replicaUrls:
+  client: # Configuration for interfacing with Contact Discovery Service cluster
+    userAuthenticationTokenSharedSecret: # hex-encoded secret shared with CDS used to generate auth tokens for Signal users
+    userAuthenticationTokenUserIdSecret: # hex-encoded secret shared among Signal-Servers to obscure user phone numbers from CDS
+  sqs:
+    accessKey:      # AWS SQS accessKey
+    accessSecret:   # AWS SQS accessSecret
+    queueUrl:       # AWS SQS queue url
+  server:
+    replicationUrl:                # CDS replication endpoint base url
+    replicationPassword:           # CDS replication endpoint password
+    replicationCaCertificate:      # CDS replication endpoint TLS certificate trust root
+    reconciliationChunkSize:       # CDS reconciliation chunk size
+    reconciliationChunkIntervalMs: # CDS reconciliation chunk interval, in milliseconds
+
+messageCache: # Redis server configuration for message store cache
+  persistDelayMinutes:
+
+  cluster:
+    urls:
+      - redis://redis.example.com:6379/
+
+messageStore: # Postgresql database configuration for message store
+  driverClass: org.postgresql.Driver
+  user:
+  password:
+  url:
+
+metricsCluster:
+  urls:
+    - redis://redis.example.com:6379/
+
+awsAttachments: # AWS S3 configuration
+  accessKey:
+  accessSecret:
+  bucket:
+  region:
+
+gcpAttachments: # GCP Storage configuration
+  domain:
+  email:
+  maxSizeInBytes:
+  pathPrefix:
+  rsaSigningKey:
+
+profiles: # AWS S3 configuration
+  accessKey:
+  accessSecret:
+  bucket:
+  region:
+
+database: # Postgresql database configuration
+  driverClass: org.postgresql.Driver
+  user:
+  password:
+  url:
+
+apn: # Apple Push Notifications configuration
+  sandbox: true
+  bundleId:
+  keyId:
+  teamId:
+  signingKey:
+
+gcm: # GCM Configuration
+  senderId:
+  apiKey:
+
+micrometer: # Micrometer metrics config
+  - name: "example"
+  - uri: "https://metrics.example.com/"
+  - apiKey:
+  - accountId:
+
+remoteConfig:
+  authorizedTokens:
+    - # 1st authorized token
+    - # 2nd authorized token
+    - # ...
+    - # Nth authorized token
+  globalConfig: # keys and values that are given to clients on GET /v1/config
+
+featureFlag:
+  authorizedTokens:
+    - # 1st authorized token
+    - # 2nd authorized token
+    - # ...
+    - # Nth authorized token
+
+paymentService:
+  userAuthenticationTokenSharedSecret: # hex-encoded 32-byte secret shared with MobileCoin services used to generate auth tokens for Signal users
